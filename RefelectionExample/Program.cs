@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using static RefelectionExample.AttributeExtensions;
 
 namespace RefelectionExample
@@ -15,7 +16,7 @@ namespace RefelectionExample
         {
             var data = new List<ReflectionClass>
             {
-                new ReflectionClass { Id  = 1, Name = "avb", Price = 61.23345 },
+                new ReflectionClass { Id  = 1, Name = "avb afafsa 3223 sdfs", Price = 61.23345 },
                 new ReflectionClass { Id  = 2, Price = 3.323234 },
                 new ReflectionClass { Id  = 3, Name = "rew", Price = 49.57553 },
             };
@@ -109,7 +110,8 @@ namespace RefelectionExample
                     {
                         if (strValue.Length > propertyData.FirstNum)
                         {
-                            strValue = strValue.Substring(0, propertyData.FirstNum.Value);
+                            var result = strValue.Substring(0, propertyData.FirstNum.Value);
+                            strValue = Regex.Replace(result, @"\r\n?|\n", "");
                         }
                     }
                     return strValue;
