@@ -16,8 +16,8 @@ namespace RefelectionExample
         {
             var data = new List<ReflectionClass>
             {
-                new ReflectionClass { Id  = 1, Name = "avb afafsa 3223 sdfs", Price = 61.23345 },
-                new ReflectionClass { Id  = 2, Price = 3.32 },
+                new ReflectionClass { Id  = 1, Name = "avbafan fsa 3223 sdfs", Price = 61.23345 },
+                new ReflectionClass { Id  = 2, Price = 3.323, CurDate = DateTime.Now },
                 new ReflectionClass { Id  = 3, Name = "rew", Price = 49.57553 },
             };
 
@@ -31,6 +31,7 @@ namespace RefelectionExample
 
             props.ForEach((item) =>
             {
+                //propertyListInuse.Add(GetAttributeByType(item));
                 var existsHeaderAttribute = item.GetCustomAttributes(false).OfType<UseHeaderAttribute>().Any();
                 if (existsHeaderAttribute)
                 {
@@ -128,9 +129,7 @@ namespace RefelectionExample
                     }
                     if (propertyData.FirstNum.HasValue && propertyData.SecondNum.HasValue)
                     {
-                        var aa = valueDouble.ToString($"F{propertyData.SecondNum}", CultureInfo.InvariantCulture);
                         return valueDouble.ToString($"F{propertyData.SecondNum}", CultureInfo.InvariantCulture).Replace(",", ".");
-
                     }
                     return valueDouble.ToString("F", CultureInfo.InvariantCulture).Replace(",", ".");
                 case nameof(DateTime):
@@ -151,6 +150,8 @@ namespace RefelectionExample
         [UseHeader]
         [MaxLength(6)]
         public string Name { get; set; }
+        [UseHeader]
+        public DateTime CurDate { get; set; }
     }
 
     public class PropertyInfoModel
