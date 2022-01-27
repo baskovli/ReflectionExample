@@ -122,8 +122,13 @@ namespace RefelectionExample
                 case nameof(Decimal):
                 case nameof(Double):
                     var valueDouble = (double)value;
+                    if (valueDouble == 0)
+                    {
+                        return string.Empty;
+                    }
                     if (propertyData.FirstNum.HasValue && propertyData.SecondNum.HasValue)
                     {
+                        var aa = valueDouble.ToString($"F{propertyData.SecondNum}", CultureInfo.InvariantCulture);
                         return valueDouble.ToString($"F{propertyData.SecondNum}", CultureInfo.InvariantCulture).Replace(",", ".");
 
                     }
