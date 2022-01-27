@@ -17,7 +17,7 @@ namespace RefelectionExample
             var data = new List<ReflectionClass>
             {
                 new ReflectionClass { Id  = 1, Name = "avb afafsa 3223 sdfs", Price = 61.23345 },
-                new ReflectionClass { Id  = 2, Price = 3.323234 },
+                new ReflectionClass { Id  = 2, Price = 3.32 },
                 new ReflectionClass { Id  = 3, Name = "rew", Price = 49.57553 },
             };
 
